@@ -2404,7 +2404,7 @@
           "Title Resources"
         ],
         "summary": "Get List of Titles Regardless of Package",
-        "description": "This operation allows you to search and retrieve a list of titles from EPKB regardless of the package(s) that the titles are a part of. Results are returned title-level: each title is a single object, with its associated customer resources (package associations) nested underneath. Each nested customer resource carries visibility broken out by Publication Finder (PF), Full Text Finder (FTF), and MARC, rather than a single hidden/reason flag. The response will reflect the context of the EBSCO customer ID included in the request.  \n\n  **Please Note:**  You will need an API key to gain access to the API through our interactive documentation. If you require an API key, please contact EBSCO customer support.",
+        "description": "This operation allows you to search and retrieve a list of titles from EPKB regardless of the package(s) that the titles are a part of.  The response will reflect the context of the EBSCO customer ID included in the request.  \n\n  **Please Note:**  You will need an API key to gain access to the API through our interactive documentation. If you require an API key, please contact EBSCO customer support.",
         "parameters": [
           {
             "name": "custid",
@@ -2594,7 +2594,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Title-level list of titles regardless of package, with nested customer resources and PF/FTF/MARC visibility, and the total number of results found.",
+            "description": "List of titles that are part of a specified package.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3788,7 +3788,7 @@
           "Title Resources"
         ],
         "summary": "Get Title Details Regardless of Package",
-        "description": "This operation allows you to retrieve details for a particular title from EPKB regardless of the package that it is a part of. The response is title-level: a single title object, with its associated customer resources (package associations) nested underneath, and each nested customer resource carrying visibility broken out by Publication Finder (PF), Full Text Finder (FTF), and MARC. The response will reflect the context of the EBSCO customer ID included in the request.\n\n  **Please Note:**  You will need an API key to gain access to the API through our interactive documentation. If you require an API key, please contact EBSCO customer support.",
+        "description": "This operation allows you to retrieve details for a particular title from EPKB regardless of the package that it is a part of.  The response will reflect the context of the EBSCO customer ID included in the request.\n\n  **Please Note:**  You will need an API key to gain access to the API through our interactive documentation. If you require an API key, please contact EBSCO customer support.",
         "operationId": "getTitleDetailsRegardlessOfPackageV2UsingGET",
         "parameters": [
           {
@@ -3814,7 +3814,7 @@
           {
             "name": "subjects",
             "in": "query",
-            "description": "Types of subjects to be returned. By default returns tli and bisac. Valid values are: bisac, tli, libraryofcongress and medical.",
+            "description": "Type of subject to be returned. By default returns tli, bisac. Valid values are: bisac, tli, libraryofcongress, medical. It is also valid to use 0 for bisac, 1 for tli, 2 for libraryofcongress, 3 for medical",
             "required": false,
             "style": "form",
             "explode": true,
@@ -3851,7 +3851,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Title details, regardless of package, title-level with nested customer resources and PF/FTF/MARC visibility.",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -3879,7 +3879,7 @@
           "Title Resources"
         ],
         "summary": "Search Titles Within a List",
-        "description": "This operation allows you to perform an advanced search on titles within a list by search term with various filtering options and search strategies. Results are returned title-level: each title is a single object, with its associated customer resources (package associations for this list) nested underneath, and each nested customer resource carrying visibility broken out by Publication Finder (PF), Full Text Finder (FTF), and MARC.\n\n  **Please Note:**  You will need an API key to gain access to the API through our interactive documentation. If you require an API key, please contact EBSCO customer support.",
+        "description": "This operation allows you to perform an advanced search on titles within a list by search term with various filtering options and search strategies.\n\n  **Please Note:**  You will need an API key to gain access to the API through our interactive documentation. If you require an API key, please contact EBSCO customer support.",
         "operationId": "get-v2-listid-titles",
         "parameters": [
           {
@@ -4017,7 +4017,7 @@
           {
             "name": "subjects",
             "in": "query",
-            "description": "Types of subjects to be returned. By default returns tli and bisac. Valid values are: bisac, tli, libraryofcongress and medical.",
+            "description": "Type of subject to be returned. By default returns tli, bisac. Valid values are: bisac, tli, libraryofcongress, medical. It is also valid to use 0 for bisac, 1 for tli, 2 for libraryofcongress, 3 for medical",
             "style": "form",
             "explode": true,
             "schema": {
@@ -4045,7 +4045,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Title-level list of titles within the specified list, with nested customer resources and PF/FTF/MARC visibility, and the total number of results found.",
+            "description": "List of titles that are part of a specified package.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4099,7 +4099,7 @@
           "Title Resources"
         ],
         "summary": "Get Title Details by Package",
-        "description": "This operation allows you to search and retrieve a list of titles from EPKB respective of the package(s) that the titles are a part of. The response will reflect the context of the EBSCO customer ID included in the request.\n\n  **Please Note:**  You will need an API key to gain access to the API through our interactive documentation. If you require an API key, please contact EBSCO customer support.",
+        "description": "This operation allows you to retrieve details for a particular title within a specified list from EPKB.  The response will reflect the context of the EBSCO customer ID included in the request.\n\n  **Please Note:**  You will need an API key to gain access to the API through our interactive documentation. If you require an API key, please contact EBSCO customer support.",
         "operationId": "getTitleDetailsByPackageV2UsingGET",
         "parameters": [
           {
@@ -4135,18 +4135,21 @@
           {
             "name": "subjects",
             "in": "query",
-            "description": "Type of subject to be returned. By default returns tli, bisac. Valid values are: bisac, tli, libraryofcongress, medical. It is also valid to use 0 for bisac, 1 for tli, 2 for libraryofcongress, 3 for medical",
+            "description": "Types of subjects to be returned. By default returns tli and bisac. Valid values are: bisac, tli, libraryofcongress and medical.",
             "required": false,
             "style": "form",
             "explode": true,
             "schema": {
-              "type": "string",
-              "enum": [
-                "bisac",
-                "libraryofcongress",
-                "medical",
-                "tli"
-              ]
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "bisac",
+                  "libraryofcongress",
+                  "medical",
+                  "tli"
+                ]
+              }
             }
           },
           {
@@ -4173,7 +4176,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LocationV2"
+                  "$ref": "#/components/schemas/titleDetailsV2"
                 }
               }
             }
@@ -7340,6 +7343,11 @@
             "description": "Indicates if selected in a customer's account.",
             "example": false
           },
+          "isOrderedThroughEbsco": {
+            "type": "boolean",
+            "description": "Limiter to include only records associated with an EBSCO order.",
+            "example": false
+          },
           "isTokenNeeded": {
             "type": "boolean",
             "description": "Field to indicate if a token is needed",
@@ -7382,6 +7390,21 @@
             "description": "Package URL",
             "example": "http://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=ehost&defaultdb=27h"
           },
+          "isPrimaryPackage": {
+            "type": "boolean",
+            "description": "Indicates if the package is a vendor's primary package.",
+            "example": false
+          },
+          "kbartExcluded": {
+            "type": "boolean",
+            "description": "Indicates if the resource is excluded from KBART holdings exports.",
+            "example": false
+          },
+          "kbartCoverageOwnership": {
+            "type": "boolean",
+            "description": "Indicates ownership of the KBART coverage for this resource.",
+            "example": false
+          },
           "userDefinedField1": {
             "type": "string",
             "description": "User Defined Field 1",
@@ -7407,10 +7430,9 @@
             "description": "User Defined Field 5",
             "example": "string5"
           },
-          "selectedBy": {
+          "consortia": {
             "type": "string",
-            "description": "The resource last selected by EBSCO or the customer.",
-            "example": ""
+            "description": "Indicates the consortia associated with a package."
           }
         },
         "description": "This object represents data elements that describe customer resources information for a title, regardless of package, in the v2 contract. It is the v2 counterpart of the v0 'customerResources' schema, with 'visibilityData' (single isHidden/reason) replaced by 'visibility' (an array covering PF, FTF and MARC individually)."
