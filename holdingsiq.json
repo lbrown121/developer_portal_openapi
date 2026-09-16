@@ -2567,7 +2567,13 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "bisac",
+                  "libraryofcongress",
+                  "medical",
+                  "tli"
+                ]
               }
             }
           },
