@@ -7202,14 +7202,14 @@
       "TitleResponseV2": {
         "required": [
           "pubType",
-          "titleId",
+          "kbid",
           "titleName"
         ],
         "type": "object",
         "properties": {
-          "titleId": {
+          "kbid": {
             "type": "integer",
-            "description": "Title ID",
+            "description": "EBSCO's unique identifier for the title",
             "example": 1157191
           },
           "titleName": {
@@ -7294,19 +7294,19 @@
       },
       "CustomerResourcesV2": {
         "required": [
-          "packageId",
+          "listId",
           "packageName",
           "packageType",
           "proxy"
         ],
         "type": "object",
         "properties": {
-          "titleId": {
+          "kbid": {
             "type": "integer",
-            "description": "Title ID",
+            "description": "EBSCO's unique identifier for the title",
             "example": 1157191
           },
-          "packageId": {
+          "listId": {
             "type": "integer",
             "description": "EBSCO KB's unique identifier for the package.  In EPKB, this is 'PkgID'.",
             "example": 1117849
