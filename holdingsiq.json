@@ -2598,7 +2598,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/titlesV2"
+                  "$ref": "#/components/schemas/TitleSearchResponseV2"
                 }
               }
             }
@@ -3855,7 +3855,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/titleDetailsV2"
+                  "$ref": "#/components/schemas/TitleResponseV2"
                 }
               }
             }
@@ -4049,7 +4049,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/titlesV2"
+                  "$ref": "#/components/schemas/TitleSearchResponseV2"
                 }
               }
             }
@@ -4176,7 +4176,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/titleDetailsV2"
+                  "$ref": "#/components/schemas/TitleResponseV2"
                 }
               }
             }
@@ -7170,7 +7170,7 @@
         },
         "description": "This object represents data elements to set custom coverage, coverage statement and custom embargo."
       },
-      "titlesV2": {
+      "TitleSearchResponseV2": {
         "required": [
           "totalResults"
         ],
@@ -7184,7 +7184,7 @@
           "titles": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/titleDetailsV2"
+              "$ref": "#/components/schemas/TitleResponseV2"
             }
           },
           "facets": {
@@ -7193,7 +7193,7 @@
         },
         "description": "Title-level list of titles regardless of package, from EPKB, and the total number of results found. Each title carries its nested customer resources with PF/FTF/MARC visibility. This is the v2 counterpart of the v0 'titles' wrapper, updated to the current (title-level, multi-category visibility) contract."
       },
-      "titleDetailsV2": {
+      "TitleResponseV2": {
         "required": [
           "pubType",
           "titleId",
@@ -7251,7 +7251,7 @@
             "type": "array",
             "description": "Customer Resources List",
             "items": {
-              "$ref": "#/components/schemas/customerResourcesV2"
+              "$ref": "#/components/schemas/CustomerResourcesV2"
             }
           },
           "description": {
@@ -7286,7 +7286,7 @@
         },
         "description": "This object represents data elements that describe a title, regardless of package, in the v2 contract. It is the v2 counterpart of the v0 'titleDetails' schema: same title-level shape, with customerResourcesList items updated to carry PF/FTF/MARC visibility instead of a single isHidden/reason flag."
       },
-      "customerResourcesV2": {
+      "CustomerResourcesV2": {
         "required": [
           "packageId",
           "packageName",
