@@ -7441,7 +7441,7 @@
             "description": "Indicates the consortia associated with a package."
           }
         },
-        "description": "This object represents data elements that describe customer resources information for a title, regardless of package, in the v2 contract. It is the v2 counterpart of the v0 'customerResources' schema, with 'visibilityData' (single isHidden/reason) replaced by 'visibility' (an array covering PF, FTF and MARC individually)."
+        "description": "This object represents data elements that describe customer resources information for a title within a package, in the v2 contract. It is the v2 counterpart of the v0 'customerResources' schema, with 'visibilityData' (single isHidden/reason) replaced by 'visibility' (an array covering PF, FTF and MARC individually)."
       },
       "titlesPackageId": {
         "required": [
