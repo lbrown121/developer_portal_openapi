@@ -2604,7 +2604,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TitleSearchResponseV2"
+                  "$ref": "#/components/schemas/TitleSearchResultsV2"
                 }
               }
             }
@@ -4182,7 +4182,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TitleResponseV2"
+                  "$ref": "#/components/schemas/LocationV2"
                 }
               }
             }
@@ -7176,7 +7176,7 @@
         },
         "description": "This object represents data elements to set custom coverage, coverage statement and custom embargo."
       },
-      "TitleSearchResponseV2": {
+      "TitleSearchResultsV2": {
         "required": [
           "totalResults"
         ],
@@ -7197,7 +7197,30 @@
             "$ref": "#/components/schemas/Facets"
           }
         },
-        "description": "Title-level list of titles regardless of package, from EPKB, and the total number of results found. Each title carries its nested customer resources with PF/FTF/MARC visibility. This is the v2 counterpart of the v0 'titles' wrapper, updated to the current (title-level, multi-category visibility) contract."
+        "description": "Title-level list of titles regardless of package, from EPKB, and the total number of results found. Each title carries its nested customer resources with PF/FTF/MARC visibility. This is a new schema distinct from TitleSearchResponseV2, which remains the original flat shape used by the by-package/by-list search endpoint."
+      },
+      "TitleSearchResponseV2": {
+        "required": [
+          "totalResults"
+        ],
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "type": "integer",
+            "description": "Total number of results found.",
+            "example": 5
+          },
+          "titles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LocationV2"
+            }
+          },
+          "facets": {
+            "$ref": "#/components/schemas/Facets"
+          }
+        },
+        "description": "Flat, list-scoped list of titles within a specified package, from EPKB, and the total number of results found. One row per title/resource pair, matching LocationV2. This is the original, unchanged shape for this endpoint."
       },
       "TitleResponseV2": {
         "required": [
@@ -7441,7 +7464,7 @@
             "description": "Indicates the consortia associated with a package."
           }
         },
-        "description": "This object represents data elements that describe customer resources information for a title within a package, in the v2 contract. It is the v2 counterpart of the v0 'customerResources' schema, with 'visibilityData' (single isHidden/reason) replaced by 'visibility' (an array covering PF, FTF and MARC individually)."
+        "description": "This object represents data elements that describe customer resources information for a title, regardless of package, in the v2 contract. It is the v2 counterpart of the v0 'customerResources' schema, with 'visibilityData' (single isHidden/reason) replaced by 'visibility' (an array covering PF, FTF and MARC individually)."
       },
       "titlesPackageId": {
         "required": [
